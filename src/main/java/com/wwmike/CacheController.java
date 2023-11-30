@@ -27,6 +27,7 @@ public class CacheController {
 
     @Post("/{name}/{id}")
     @Produces("text/plain")
+    @Consumes("text/plain")
     public HttpResponse<String> saveItemToCache(String name, String id, @Body String body) {
         Map<String, String> cache = cacheService.getCache(name);
         if (cache.containsKey(id)) {
@@ -41,6 +42,7 @@ public class CacheController {
     }
 
     @Put("/")
+    @Consumes("text/plain")
     public HttpResponse<Void> updateItemInCache(String name, String id, @Body String body) {
 
         Map<String, String> cache = cacheService.getCache(name);
